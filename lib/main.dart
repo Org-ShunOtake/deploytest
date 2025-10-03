@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:poptest/router_provider/router.dart';
-import 'src/web_pop_handler_stub.dart'
-    if (dart.library.js_interop) 'src/web_pop_handler.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,13 +24,6 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (kIsWeb) {
-      attachWebPopHandler(() {
-        // ログ／フラグ等、必要ならここで行う
-        debugPrint('web pop detected and neutralized');
-      });
-    }
-
     final router = ref.watch(routerProvider);
     return PopScope(
       canPop: false,

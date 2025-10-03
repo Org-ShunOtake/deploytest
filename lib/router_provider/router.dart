@@ -24,27 +24,11 @@ class Router extends _$Router {
           routes: [
             GoRoute(
               path: PagePath.home,
-              builder: (context, state) => PopScope(
-                canPop: false,
-                child: HomePage(),
-                onPopInvokedWithResult: (didPop, result) {
-                  debugPrint("onpopInvokedWithResult");
-                  return;
-                  //あえて何もしない
-                },
-              ),
+              builder: (context, state) => HomePage(),
             ),
             GoRoute(
               path: PagePath.next,
-              builder: (context, state) => PopScope(
-                canPop: false,
-                child: NextPage(),
-                onPopInvokedWithResult: (didPop, result) {
-                  debugPrint("onpopInvokedWithResult");
-                  //あえて何もしない
-                  return;
-                },
-              ),
+              builder: (context, state) => NextPage(),
             ),
           ],
         ),
