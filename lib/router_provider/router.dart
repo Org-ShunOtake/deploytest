@@ -24,11 +24,13 @@ class Router extends _$Router {
           routes: [
             GoRoute(
               path: PagePath.home,
-              builder: (context, state) => HomePage(),
+              builder: (context, state) =>
+                  PopScope(canPop: false, child: HomePage()),
             ),
             GoRoute(
               path: PagePath.next,
-              builder: (context, state) => NextPage(),
+              builder: (context, state) =>
+                  PopScope(canPop: false, child: NextPage()),
             ),
           ],
         ),
