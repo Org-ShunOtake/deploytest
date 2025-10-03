@@ -28,6 +28,7 @@ class Router extends _$Router {
                 canPop: false,
                 child: HomePage(),
                 onPopInvokedWithResult: (didPop, result) {
+                  debugPrint("onpopInvokedWithResult");
                   return;
                   //あえて何もしない
                 },
@@ -39,6 +40,7 @@ class Router extends _$Router {
                 canPop: false,
                 child: NextPage(),
                 onPopInvokedWithResult: (didPop, result) {
+                  debugPrint("onpopInvokedWithResult");
                   //あえて何もしない
                   return;
                 },
