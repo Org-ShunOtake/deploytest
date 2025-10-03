@@ -7,15 +7,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("home Page"),
-        FilledButton(
-          onPressed: () => context.push(PagePath.next),
-          child: Text("go next"),
+    return SizedBox.expand(
+      child: ColoredBox(
+        color: Colors.red.shade300,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("home Page"),
+            FilledButton(
+              onPressed: () => context.push(PagePath.next),
+              child: Text("go next"),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
@@ -25,12 +30,20 @@ class NextPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Next Page"),
-        FilledButton(onPressed: () => context.pop(), child: Text("go back")),
-      ],
+    return SizedBox.expand(
+      child: ColoredBox(
+        color: Colors.yellow.shade300,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Next Page"),
+            FilledButton(
+              onPressed: () => context.pop(),
+              child: Text("go back"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
