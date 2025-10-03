@@ -32,6 +32,26 @@
   <title>poptest</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
+
+    <style>
+      /* overscroll-behavior も効くなら補助で入れておく */
+      html, body {
+        overscroll-behavior-x: none;
+        overscroll-behavior-y: none;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // 左端からのスワイプで戻るを防止
+      document.addEventListener('touchstart', function (e) {
+        if (e.touches[0].clientX < 20) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    </script>
+
 <body>
   <script src="flutter_bootstrap.js" async></script>
 </body>
