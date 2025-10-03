@@ -49,28 +49,11 @@ class App extends ConsumerWidget {
           pageTransitionsTheme: const PageTransitionsTheme(
             builders: {
               TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-              TargetPlatform.iOS: kIsWeb
-                  ? const NoAnimationPageTransitionsBuilder()
-                  : const CupertinoPageTransitionsBuilder(),
+              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
             },
           ),
         ),
       ),
     );
-  }
-}
-
-class NoAnimationPageTransitionsBuilder extends PageTransitionsBuilder {
-  const NoAnimationPageTransitionsBuilder();
-  @override
-  Widget buildTransitions<T>(
-    PageRoute<T> route,
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-    Widget child,
-  ) {
-    // そのまま child を返してアニメーションさせない
-    return child;
   }
 }
