@@ -6,9 +6,9 @@ void attachWebPopHandler(void Function() onPop) {
   // popstate を検知して即座に replaceState で元に戻す
   web.window.onPopState.listen((event) {
     debugPrint("${web.window.location.href}");
-    // 直ちに履歴を同じ URL に戻す（履歴を変えない）
-    web.window.history.replaceState(null, '', web.window.location.href);
-    // 必要ならコールバックを呼ぶ（ログやフラグセット）
+    // Flutterへの伝達をブロック
+    event.preventDefault();
+    event.stopImmediatePropagation();
     onPop();
   });
 }
