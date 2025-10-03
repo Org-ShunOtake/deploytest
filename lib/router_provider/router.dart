@@ -20,6 +20,7 @@ class Router extends _$Router {
         ShellRoute(
           builder: (context, state, child) {
             return PopScope(
+              canPop: false,
               child: Scaffold(body: Center(child: child)),
             );
           },
