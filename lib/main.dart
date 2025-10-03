@@ -23,21 +23,24 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
-    return MaterialApp.router(
-      routerConfig: router,
-      theme: ThemeData(
-        fontFamily: 'NotoSansJP',
-        fontFamilyFallback: kIsWeb ? ['NotoColorEmoji'] : null,
-        textSelectionTheme: TextSelectionThemeData(
-          selectionColor: Color(0x3370A6A8), // 選択範囲の色
-          cursorColor: Color(0xFF70A6A8), // カーソルの色
-          selectionHandleColor: Color(0xFF70A6A8),
-        ), // ハンドルの色
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: {
-            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          },
+    return PopScope(
+      canPop: false,
+      child: MaterialApp.router(
+        routerConfig: router,
+        theme: ThemeData(
+          fontFamily: 'NotoSansJP',
+          fontFamilyFallback: kIsWeb ? ['NotoColorEmoji'] : null,
+          textSelectionTheme: TextSelectionThemeData(
+            selectionColor: Color(0x3370A6A8), // 選択範囲の色
+            cursorColor: Color(0xFF70A6A8), // カーソルの色
+            selectionHandleColor: Color(0xFF70A6A8),
+          ), // ハンドルの色
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            },
+          ),
         ),
       ),
     );
