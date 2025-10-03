@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
           children: [
             Text("home Page"),
             FilledButton(
-              onPressed: () => context.go(PagePath.next),
+              onPressed: () => context.push(PagePath.next),
               child: Text("go next"),
             ),
           ],
@@ -38,7 +38,7 @@ class NextPage extends StatelessWidget {
           children: [
             Text("Next Page"),
             FilledButton(
-              onPressed: () => context.go(PagePath.home),
+              onPressed: () => context.pop(),
               child: Text("go back"),
             ),
           ],
