@@ -5,13 +5,6 @@ import 'package:poptest/router_provider/router.dart';
 import 'package:web/web.dart' hide Animation;
 
 void main() {
-  // Web環境限定で onPopState を監視
-  final win = window;
-  win.onPopState.listen((event) {
-    // 戻る操作を打ち消す
-    win.history.replaceState(null, '', win.location.href);
-  });
-
   runApp(const MyApp());
 }
 
