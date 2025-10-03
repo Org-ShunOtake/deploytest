@@ -19,7 +19,9 @@ class Router extends _$Router {
       routes: [
         ShellRoute(
           builder: (context, state, child) {
-            return Scaffold(body: Center(child: child));
+            return PopScope(
+              child: Scaffold(body: Center(child: child)),
+            );
           },
           routes: [
             GoRoute(
