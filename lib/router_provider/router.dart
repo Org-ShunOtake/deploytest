@@ -28,6 +28,12 @@ class Router extends _$Router {
                 canPop: false,
                 child: HomePage(),
                 onPopInvokedWithResult: (didPop, result) {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Text("pop");
+                    },
+                  );
                   //あえて何もしない
                 },
               ),
@@ -39,6 +45,12 @@ class Router extends _$Router {
                 child: NextPage(),
                 onPopInvokedWithResult: (didPop, result) {
                   //あえて何もしない
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Text("pop");
+                    },
+                  );
                 },
               ),
             ),
