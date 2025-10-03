@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:poptest/router_provider/router.dart';
-import 'package:web/web.dart';
+import 'package:web/web.dart' hide Animation;
 
 void main() {
   // Web環境限定で onPopState を監視
@@ -46,11 +46,28 @@ class App extends ConsumerWidget {
           pageTransitionsTheme: const PageTransitionsTheme(
             builders: {
               TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+              TargetPlatform.iOS: kIsWeb
+                  ? const NoAnimationPageTransitionsBuilder()
+                  : const CupertinoPageTransitionsBuilder(),
             },
           ),
         ),
       ),
     );
+  }
+}
+
+class NoAnimationPageTransitionsBuilder extends PageTransitionsBuilder {
+  const NoAnimationPageTransitionsBuilder();
+  @override
+  Widget buildTransitions<T>(
+    PageRoute<T> route,
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    // そのまま child を返してアニメーションさせない
+    return child;
   }
 }
