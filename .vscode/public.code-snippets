@@ -1,0 +1,226 @@
+{
+
+    "flutter":{
+      "prefix": "flutter",
+      "scope": "dart",
+      "body": [
+        "import 'package:flutter/material.dart';",
+        "",
+        "void main(){",
+        "",
+        "}",
+      ]
+    },
+    "runappmaterial":{
+      "prefix": "MaterialRunApp",
+      "scope": "dart",
+      "body": [
+        "const app =",
+        "MaterialApp(",
+        " home: Scaffold(",
+        "   body: Center(",
+        "     child: Text('data')$1",
+        "   )",
+        " )",
+        ");",
+        "",
+        "runApp(app);",
+      ]    
+    },
+    "@freezed": {
+      "prefix": "@freezed",
+      "scope": "dart",
+      "body": [
+        "import 'package:freezed_annotation/freezed_annotation.dart';",
+        "part '$TM_FILENAME_BASE.freezed.dart';",
+        "",
+        "@freezed",
+        "abstract class $1 with _$$1 {",
+        "  const factory $1({",
+        "    required int data1,",
+        "    required int data2,",
+        "    required int data3,",
+        "  }) = _$1;",
+        "}"
+      ]
+    },
+  
+    "@freezed_json": {
+      "prefix": "@freezed_json",
+      "scope": "dart",
+      "body": [
+        "import 'package:freezed_annotation/freezed_annotation.dart';",
+        "part '$TM_FILENAME_BASE.freezed.dart';",
+        "part '$TM_FILENAME_BASE.g.dart';",
+        "",
+        "@freezed",
+        "abstract class ${1:Xxx} with _$${1:Xxx} {",
+        "  const factory ${1:Xxx}({",
+        "",
+        "  }) = _${1:Xxx};",
+        "  factory ${1:Xxx}.fromJson(Map<String, dynamic> json) => _$${1:Xxx}FromJson(json);",
+        "}"
+      ]
+    },
+
+    "@riverpod_Notifier": {
+      "prefix": "@riverpod",
+      "scope": "dart",
+      "body": [
+        "import 'package:flutter_riverpod/flutter_riverpod.dart';",
+        "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+        "",
+        "part '$TM_FILENAME_BASE.g.dart';",
+        "",
+        "@riverpod",
+        "class $1 extends _$${1} {",
+        "  @override",
+        "  int build() {",
+        "    return 0; // 初期状態",
+        "  }",
+        "",
+        "  void increment() {",
+        "    state++;",
+        "  }",
+        "}"
+      ]
+    },
+
+      "@riverpod_AsyncNotifier": {
+    "prefix": "@riverpod_async",
+    "scope": "dart",
+    "body": [
+      "import 'package:flutter_riverpod/flutter_riverpod.dart';",
+      "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+      "",
+      "part '$TM_FILENAME_BASE.g.dart';",
+      "",
+      "@riverpod",
+      "class $1 extends _$${1} {",
+      "  @override",
+      "  Future<int> build() async {",
+      "    // 非同期初期化処理例",
+      "    await Future.delayed(const Duration(seconds: 1));",
+      "    return 0;",
+      "  }",
+      "",
+      "  Future<void> increment() async {",
+      "    state = const AsyncValue.loading();",
+      "    try {",
+      "      // 非同期処理例",
+      "      await Future.delayed(const Duration(milliseconds: 500));",
+      "      state = AsyncValue.data((state.value ?? 0) + 1);",
+      "    } catch (e, st) {",
+      "      state = AsyncValue.error(e, st);",
+      "    }",
+      "  }",
+      "}"
+    ]
+  },
+  
+    "state_provider": {
+      "prefix": "state_provider",
+      "scope": "dart",
+      "body": [
+        "final $1Provider = StateProvider<int>((ref) {",
+        "  return 0;",
+        "});"
+      ]
+    },
+  
+    "consumer": {
+      "prefix": "consumer",
+      "scope": "dart",
+      "body": [
+        "class $1 extends ConsumerWidget {",
+        "  const $1({",
+        "    super.key,",
+        "  });",
+        "",
+        "  @override",
+        "  Widget build(BuildContext context, WidgetRef ref) {",
+        "    return Container();",
+        "  }",
+        "}"
+      ]
+    },
+  
+    "enum_codable": {
+      "prefix": "enum_codable",
+      "scope": "dart",
+      "body": [
+        "enum $1 {",
+        "  aaa(0),",
+        "  bbb(1),",
+        "  ccc(2);",
+        "",
+        "  const $1(this.encoded);",
+        "  final int encoded;",
+        "  factory $1.fromJson(dynamic json) {",
+        "    return $1.values.firstWhere((value) {",
+        "      return value.encoded == json;",
+        "    });",
+        "  }",
+        "  dynamic toJson() => encoded;",
+        "}"
+      ]
+    },
+
+    "FutureBuilder": {
+    "prefix": "futurebuilder",
+    "body": [
+      "FutureBuilder<${1:YourType}>(",
+      "  future: ${2:yourFutureFunction}(),",
+      "  builder: (context, snapshot) {",
+      "    if (snapshot.connectionState == ConnectionState.waiting) {",
+      "      return CircularProgressIndicator();",
+      "    } else if (snapshot.hasError) {",
+      "      return Text(\"エラー: ${snapshot.error}\");",
+      "    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {",
+      "      return const Text(\"データがありません\");",
+      "    } else {",
+      "      final ${3:data} = snapshot.data!;",
+      "          return Text('data')",
+      "        },",
+      "      );",
+      "    }",
+      "  },",
+      ");"
+    ],
+  "description": "FutureBuilderテンプレート - 非同期データ表示"
+  },
+
+  "consumerful" : {
+    "prefix": "consumerstateful",
+    "body": [
+      "class $1 extends ConsumerStatefulWidget {",
+      "  const $1 ({super.key});",
+      "  @override",
+      "  ConsumerState<$1> createState() => _$1State();",
+      "}",
+      "",
+      "class _$1State extends ConsumerState<$1> {",
+      "  @override",
+      "  void initState() {",
+      "    super.initState();",
+      "    // 初期化処理やAPI呼び出しなどできる！",
+      "  }",
+      "",
+      "  @override",
+      "  Widget build(BuildContext context) {",
+      "",
+      "    return Text('data');",
+      "  }",
+      "}",
+    ]
+  },
+
+  "widgetbinding" : {
+    "prefix": "widgetBinding",
+    "body": [
+      "WidgetsBinding.instance.addPostFrameCallback((_) {",
+      "",
+      "});"
+    ]
+  }
+}
